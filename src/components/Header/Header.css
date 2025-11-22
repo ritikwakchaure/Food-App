@@ -1,0 +1,48 @@
+.header {
+    height: 34vw;
+    margin: 30px auto;
+    background-image: url("/header_img.png");
+    background-size: cover;
+    /* <- YE CHANGE */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* better than center for text */
+    gap: 1.5vh;
+    max-width: 40%;
+    bottom: 10%;
+    left: 5%;
+    /* <- vh se % better */
+    color: white;
+    /* image ke hisab se decide */
+}
+
+.header-contents h2 {
+    font-weight: 500;
+    color: white;
+    font-size: max(4.5vh,22px)
+}
+
+.header-contents p {
+    color: white;
+    font-size: 1vw;
+}
+
+.header-contents button{
+    border: none;
+    color: #747474;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: white;
+    font-size: max(1vw,13px);
+    border-radius: 50px;
+}

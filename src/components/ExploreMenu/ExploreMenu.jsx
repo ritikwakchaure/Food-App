@@ -2,8 +2,6 @@ import { menu_list } from "../../assets/assets";
 import "./ExploreMenu.css";
 
 const ExploreMenu = ({ category, setCategory }) => {
-	console.log(category);
-	console.log(category);
 	return (
 		<div className="explore-menu" id="explore-menu">
 			<h2>Explore Menu</h2>
@@ -24,7 +22,7 @@ const ExploreMenu = ({ category, setCategory }) => {
 					>
 						<img
 							// className={category === item.menu_name ? "active" : " "}
-							 className={category === item.menu_name ? "active" : ""}
+							className={category === item.menu_name ? "active" : ""}
 							src={item.menu_image}
 							alt=""
 						/>

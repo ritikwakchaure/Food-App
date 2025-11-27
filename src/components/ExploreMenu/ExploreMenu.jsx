@@ -7,29 +7,30 @@ const ExploreMenu = ({ category, setCategory }) => {
 			<h2>Explore Menu</h2>
 			<p className="explore-menu-text">
 				Choose from a diverse menu featuring a delectable array of dishes. Our
-				offerings include a variety of starters, main courses, and desserts
+				offerings include a variety of starters, main courses, and desserts.
 			</p>
+
 			<div className="explore-menu-list">
 				{menu_list.map((item, index) => (
 					<div
 						onClick={() =>
 							setCategory((prev) =>
-								prev === item.menu_list ? "All" : item.menu_list
+								prev === item.menu_name ? "All" : item.menu_name
 							)
 						}
 						key={index}
 						className="explore-menu-list-item"
 					>
 						<img
-							// className={category === item.menu_name ? "active" : " "}
 							className={category === item.menu_name ? "active" : ""}
 							src={item.menu_image}
-							alt=""
+							alt={item.menu_name}
 						/>
 						<p>{item.menu_name}</p>
 					</div>
 				))}
 			</div>
+
 			<hr />
 		</div>
 	);

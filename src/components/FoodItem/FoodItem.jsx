@@ -5,41 +5,30 @@ import "./FoodItem.css";
 
 const FoodItem = ({ id, name, price, description, image }) => {
 	const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
-
-	// Debug: Log the id and current cart count
-	// console.log(`FoodItem ${name} - ID: ${id}, Count: ${cartItems[id] || 0}`);
+	const count = cartItems[id] || 0;
 
 	return (
 		<div className="food-item">
 			<div className="food-item-img-container">
 				<img className="food-item-img" src={image} alt={name} />
 
-				{!cartItems[id] ? (
+				{count === 0 ? (
 					<img
 						className="add"
-						onClick={() => {
-							console.log(`Adding item with ID: ${id}, Name: ${name}`);
-							addToCart(id);
-						}}
+						onClick={() => addToCart(id)}
 						src={assets.add_icon_white}
 						alt="Add item"
 					/>
 				) : (
 					<div className="food-item-counter">
 						<img
-							onClick={() => {
-								// console.log(`Removing item with ID: ${id}, Name: ${name}`);
-								removeFromCart(id);
-							}}
+							onClick={() => removeFromCart(id)}
 							src={assets.remove_icon_red}
 							alt="Remove item"
 						/>
-						<p>{cartItems[id]}</p>
+						<p>{count}</p>
 						<img
-							onClick={() => {
-								console.log(`Adding item with ID: ${id}, Name: ${name}`);
-								addToCart(id);
-							}}
+							onClick={() => addToCart(id)}
 							src={assets.add_icon_green}
 							alt="Add item"
 						/>

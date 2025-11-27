@@ -1,46 +1,66 @@
 import { useState } from "react";
 import { assets } from "../../assets/assets";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
-const Navbar = () => {
-	const [menu, setmenu] = useState("");
+
+const Navbar = ({ setshowLoginPopup }) => {
+	const [activeMenu, setActiveMenu] = useState("home");
+
 	return (
-		<div className="navbar">
-			<img src={assets.logo} alt="" className="logo" />
-			<ul className="navbar-menu">
-				<li
-					onClick={() => setmenu("home")}
-					className={menu == "home" ? "active" : ""}
-				>
-					Home
-				</li>
-				<li
-					onClick={() => setmenu("menu")}
-					className={menu == "menu" ? "active" : ""}
-				>
-					menu
-				</li>
-				<li
-					onClick={() => setmenu("mobile-app")}
-					className={menu == "mobile-app" ? "active" : ""}
-				>
-					mobile-app
-				</li>
-				<li
-					onClick={() => setmenu("contact-us")}
-					className={menu == "contact-us" ? "active" : ""}
-				>
-					contact us
-				</li>
-			</ul>
+		<nav className="navbar">
+			<div className="navbar-left">
+				<img src={assets.logo} alt="Logo" className="logo" />
+				<ul className="navbar-menu">
+					<li>
+						<Link
+							to="/"
+							onClick={() => setActiveMenu("home")}
+							className={activeMenu === "home" ? "active" : ""}
+						>
+							Home
+						</Link>
+					</li>
+					<li>
+						<a
+							href="#explore-menu"
+							onClick={() => setActiveMenu("menu")}
+							className={activeMenu === "menu" ? "active" : ""}
+						>
+							Menu
+						</a>
+					</li>
+					<li>
+						<a
+							href="#app-download"
+							onClick={() => setActiveMenu("mobile-app")}
+							className={activeMenu === "mobile-app" ? "active" : ""}
+						>
+							Mobile App
+						</a>
+					</li>
+					<li>
+						<a
+							href="#footer"
+							onClick={() => setActiveMenu("contact-us")}
+							className={activeMenu === "contact-us" ? "active" : ""}
+						>
+							Contact Us
+						</a>
+					</li>
+				</ul>
+			</div>
+
 			<div className="navbar-right">
-				<img src={assets.search_icon} alt="" />
-				<div className="navbar-search-icon">
-					<img src={assets.basket_icon} alt="" />
+				<img src={assets.search_icon} alt="Search" className="icon" />
+				<div className="navbar-basket">
+					<img src={assets.basket_icon} alt="Basket" className="icon" />
 					<div className="dot"></div>
 				</div>
-				<button>sign in</button>
+				<button className="signin-btn" onClick={() => setshowLoginPopup(true)}>
+					Sign In
+				</button>
 			</div>
-		</div>
+		</nav>
 	);
 };
 
